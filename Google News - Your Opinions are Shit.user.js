@@ -22,7 +22,6 @@
                 {
                     if (HLs[i].innerHTML.indexOf('Opinion') == 0) {
                         var theArticleNode = HLs[i].parentNode.parentNode.parentNode;
-                        console.log(HLs[i].parentNode.parentNode.innerHTML);
                         theArticleNode.parentNode.className = theArticleNode.parentNode.className + " fnoref";
                         theArticleNode.parentNode.removeChild(theArticleNode);
                     }
