@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Google News - Your Opinions are Shit
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @connect      google.com
 // @description  try to take over the world!
 // @author       You
@@ -14,19 +14,32 @@
     'use strict';
     document.addEventListener('DOMNodeInserted',function(e){
         window.setTimeout(function(){
-            var HLs = document.querySelectorAll('span[class^="SnqYCb"]');
+            var HLs_oldlayout = document.querySelectorAll('span[class^="SnqYCb"]');
+            var HLs_newlayout = document.querySelectorAll('span[class^="CUjhod"]');
             var i;
-            for (i=0;i<HLs.length;i++)
+            for (i=0;i<HLs_oldlayout.length;i++)
             {
-                if (HLs[i].parentNode.parentNode.parentNode.className.match(/\bfnoref\b/) == null)
+                if (HLs_oldlayout[i].parentNode.parentNode.parentNode.className.match(/\bfnoref\b/) == null)
                 {
-                    if (HLs[i].innerHTML.indexOf('Opinion') == 0) {
-                        var theArticleNode = HLs[i].parentNode.parentNode.parentNode;
+                    if (HLs_oldlayout[i].innerHTML.indexOf('Opinion') == 0) {
+                        var theArticleNode = HLs_oldlayout[i].parentNode.parentNode.parentNode;
                         theArticleNode.parentNode.className = theArticleNode.parentNode.className + " fnoref";
                         theArticleNode.parentNode.removeChild(theArticleNode);
                     }
                 }
             }
-       }, 200);}
+            for (i=0;i<HLs_newlayout.length;i++)
+            {
+                if (HLs_newlayout[i].parentNode.parentNode.parentNode.className.match(/\bfnoref\b/) == null)
+                {
+                    if (HLs_newlayout[i].innerHTML.indexOf('Opinion') == 0) {
+                        var theArticleNode_NL = HLs_newlayout[i].parentNode.parentNode;
+                        theArticleNode_NL.parentNode.className = theArticleNode_NL.parentNode.className + " fnoref";
+                        theArticleNode_NL.parentNode.removeChild(theArticleNode_NL);
+                    }
+                }
+            }
+
+        }, 200);}
 	, false);
 })();
