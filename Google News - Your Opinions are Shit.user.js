@@ -3,9 +3,9 @@
 // @namespace    http://tampermonkey.net/
 // @version      0.2
 // @connect      google.com
-// @description  try to take over the world!
+// @description  removes "Opinion" pieces from Google News
 // @author       You
-// @match        https://news.google.com/*
+// @match        https://news.google.*/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @grant        none
 // ==/UserScript==
