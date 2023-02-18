@@ -5,7 +5,7 @@
 // @connect      google.com
 // @description  removes "Opinion" pieces from Google News
 // @author       You
-// @match        https://news.google.*/*
+// @match        https://news.google.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @grant        none
 // ==/UserScript==
