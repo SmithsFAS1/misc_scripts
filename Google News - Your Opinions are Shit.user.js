@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      0.2
 // @connect      google.com
-// @description  removes "Opinion" pieces from Google News
+// @description  Remove Opinion pieces from Google News' pages
 // @author       You
 // @match        https://news.google.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=google.com
@@ -30,7 +30,7 @@
             }
             for (i=0;i<HLs_newlayout.length;i++)
             {
-                if (HLs_newlayout[i].parentNode.parentNode.parentNode.className.match(/\bfnoref\b/) == null)
+                if (HLs_newlayout[i].parentNode.parentNode.className.match(/\bfnoref\b/) == null)
                 {
                     if (HLs_newlayout[i].innerHTML.indexOf('Opinion') == 0) {
                         var theArticleNode_NL = HLs_newlayout[i].parentNode.parentNode;
