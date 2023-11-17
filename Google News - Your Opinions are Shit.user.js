@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Google News - Your Opinions are Shit
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.5
 // @connect      google.com
 // @description  Remove Opinion pieces from Google News' pages
 // @author       You
@@ -15,7 +15,7 @@
     document.addEventListener('DOMNodeInserted',function(e){
         window.setTimeout(function(){
             var HLs_oldlayout = document.querySelectorAll('span[class^="SnqYCb"]');
-            var HLs_newlayout = document.querySelectorAll('span[class^="CUjhod"]');
+            var HLs_newlayout = document.querySelectorAll('span');
             var i;
             for (i=0;i<HLs_oldlayout.length;i++)
             {
@@ -30,9 +30,9 @@
             }
             for (i=0;i<HLs_newlayout.length;i++)
             {
-                if (HLs_newlayout[i].parentNode.parentNode.className.match(/\bfnoref\b/) == null)
+                if (HLs_newlayout[i].parentNode.className.match(/\bfnoref\b/) == null)
                 {
-                    if (HLs_newlayout[i].innerHTML.indexOf('Opinion') == 0) {
+                    if (HLs_newlayout[i].innerHTML.toLowerCase().indexOf('opinion') == 0) {
                         var theArticleNode_NL = HLs_newlayout[i].parentNode.parentNode;
                         theArticleNode_NL.parentNode.className = theArticleNode_NL.parentNode.className + " fnoref";
                         theArticleNode_NL.parentNode.removeChild(theArticleNode_NL);
